@@ -403,6 +403,13 @@
 <script src="/front/js/form-validator.min.js"></script>
 <script src="/front/js/contact-form-script.js"></script>
 <script src="/front/js/custom.js"></script>
+<script>
+    $(document).ready(function() {
+        var url = window.location.pathname;
+        $('.nav-item, .dropdown').removeClass('active');
+        $('a[href="' + url + '"]').parent().addClass('active');
+    });
+</script>
 
 </body>
 
