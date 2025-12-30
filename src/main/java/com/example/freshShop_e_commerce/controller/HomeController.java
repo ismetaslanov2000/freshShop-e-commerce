@@ -19,6 +19,10 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model){
+        List<SideBarDto>sideBarDtoList=sideBarService.getAllSidebar();
+        List<ProductDto>productDtoList=productService.getLatest();
+        model.addAttribute("latests",productDtoList);
+        model.addAttribute("sidebar",sideBarDtoList);
         return "index.html";
     }
     @GetMapping("/about")
@@ -42,10 +46,6 @@ public class HomeController {
     public String checkout(){
         return "checkout.html";
     }
-    @GetMapping("/contact-us")
-    public String contact_us(){
-        return "contact-us.html";
-    }
     @GetMapping("/my-account")
     public String my_account(){
         return "my-account.html";
@@ -55,7 +55,9 @@ public class HomeController {
         return "shop-detail.html";
     }
     @GetMapping("/shop")
-    public String shop(){
+    public String shop(Model model){
+        List<ProductDto>productDtoList=productService.getAllProducts();
+        model.addAttribute("products",productDtoList);
         return "shop.html";
     }
     @GetMapping("/wishlist")
